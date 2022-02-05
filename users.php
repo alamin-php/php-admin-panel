@@ -1,9 +1,12 @@
 <?php 
-  $filepath = realpath(dirname(__FILE__));
-  include $filepath.'/inc/header.php';
-  include $filepath.'/inc/sidebar.php';
+  include "inc/header.php";
+  include "lib/User.php";
+  $user = new User();
 ?>
 
+<?php 
+  include "inc/sidebar.php";
+?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -48,32 +51,27 @@
                   </tr>
                   </thead>
                   <tbody>
+                    <?php
+                      $i=0;
+                      $result = $user->readAllUser();
+                      if($result){
+                        foreach($result as $value){
+                          $i++;
+                    ?>
                   <tr>
-                    <td>1</td>
-                    <td>Al Amin</td>
-                    <td>alamin</td>
-                    <td>alamin@gmail.com</td>
-                    <td>Admin</td>
-                    <td>Active</td>
+                    <td><?php echo $i; ?></td>
+                    <td><?php echo $value["name"]; ?></td>
+                    <td><?php echo $value["username"]; ?></td>
+                    <td><?php echo $value["email"]; ?></td>
+                    <td><?php echo ucfirst($value["role"]); ?></td>
+                    <td><?php echo $value["status"] == 1 ? "<strong class='text-success'>Active</strong>" : "<strong class='text-danger'>Deactive</strong>";?></td>
                     <td>
-                        <a href="#" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                        <a href="view_user.php?action=view&id=<?php echo $value['id'] ?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
                         <a href="#" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                         <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </td>
                   </tr>                  
-                  <tr>
-                    <td>2</td>
-                    <td>User</td>
-                    <td>user</td>
-                    <td>user@gmail.com</td>
-                    <td>User</td>
-                    <td>Deactive</td>
-                    <td>
-                        <a href="#" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                        <a href="#" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                    </td>
-                  </tr>
+                  <?php } } ?>
                   </tbody>
                   <tfoot>
                   <tr>
@@ -100,6 +98,4 @@
     </section>
   </div>
   <!-- /.content-wrapper -->
-<?php 
-  include $filepath.'/inc/footer.php';
-?>
+<?php include "inc/footer.php"; ?>
