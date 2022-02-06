@@ -52,7 +52,7 @@ if(isset($_POST["updateProfile"])){
         <div class="row">
           <div class="col-12">
 
-            <div class="card">
+            <div class="card" style="max-width:500px; margin:0 auto;">
               <div class="card-header">
                 <h3 class="card-title">User Profile </h3>
                 <a href="users.php" class="btn btn-info float-right">Back</a>

@@ -3,7 +3,7 @@
         private $dbhost = "localhost";
         private $dbname = "db_admin";
         private $dbuser = "root";
-        private $dbpass = "mysql";
+        private $dbpass = "";
         public $pdo;
 
         public function __construct(){

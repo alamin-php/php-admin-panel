@@ -67,8 +67,6 @@
                     <td><?php echo $value["status"] == 1 ? "<strong class='text-success'>Active</strong>" : "<strong class='text-danger'>Deactive</strong>";?></td>
                     <td>
                         <a href="view_user.php?action=view&id=<?php echo $value['id'] ?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                        <a href="#" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </td>
                   </tr>                  
                   <?php } } ?>
